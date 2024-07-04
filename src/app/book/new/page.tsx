@@ -1,3 +1,10 @@
+import { createBook } from '@/lib/actions/book';
+import BookForm from './BookForm';
+
 export default function Page() {
-  return <div>New page</div>;
+  return (
+    <div>
+      <BookForm onSubmit={createBook} />
+    </div>
+  );
 }

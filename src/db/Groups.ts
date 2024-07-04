@@ -6,10 +6,8 @@ const groupSchema = new Schema(
   {
     /** 名称 */
     name: { type: String, required: true },
-    /** 子分组 */
-    subGroups: { type: [Types.ObjectId], ref: 'Group' },
     /** 问题 */
-    questions: { type: [Types.ObjectId], ref: 'Question' },
+    questions: { type: [Types.ObjectId], required: true, ref: 'Question' },
   },
   { timestamps: true },
 );
