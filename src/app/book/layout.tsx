@@ -12,7 +12,7 @@ export default function BookLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="flex flex-col">
+    <div className="flex max-h-[calc(100vh-4rem)] flex-col">
       <div className="navbar bg-neutral text-neutral-content">
         <h1 className="navbar-start text-xl">Books</h1>
         <div className="navbar-end">

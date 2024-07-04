@@ -3535,6 +3535,7 @@ __metadata:
     prettier: "npm:^3.3.2"
     prettier-plugin-organize-attributes: "npm:^1.0.0"
     prettier-plugin-tailwindcss: "npm:^0.6.5"
+    radash: "npm:^12.1.0"
     react: "npm:^18"
     react-dom: "npm:^18"
     react-hook-form: "npm:^7.52.1"
@@ -3554,6 +3555,13 @@ __metadata:
   version: 1.2.3
   resolution: "queue-microtask@npm:1.2.3"
   checksum: 10c0/900a93d3cdae3acd7d16f642c29a642aea32c2026446151f0778c62ac089d4b8e6c986811076e1ae180a694cedf077d453a11b58ff0a865629a4f82ab558e102
+  languageName: node
+  linkType: hard
+
+"radash@npm:^12.1.0":
+  version: 12.1.0
+  resolution: "radash@npm:12.1.0"
+  checksum: 10c0/c89e2345e06017aa6ecc090c1a72d18720b70ad73608dd2a80b8994789acb1108b5b481bef18e4b489eb541a76dd8e0924d6ec9717939cc8634179a1153ad07c
   languageName: node
   linkType: hard
 
