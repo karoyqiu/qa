@@ -5,18 +5,20 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Fragment } from 'react';
 import { useFieldArray, useForm } from 'react-hook-form';
 
-import Input from '@/components/Input';
 import { flatBookSchema, type FlatBook } from '@/lib/schemas/book';
+import Input from './Input';
 import QuestionsFields from './QuestionsFields';
 
 type BookFormProps = {
+  flatBook?: FlatBook;
   onSubmit: (flatBook: FlatBook) => unknown | Promise<unknown>;
 };
 
 export default function BookForm(props: BookFormProps) {
-  const { onSubmit } = props;
+  const { flatBook, onSubmit } = props;
   const form = useForm<FlatBook>({
     resolver: zodResolver(flatBookSchema),
+    defaultValues: flatBook,
   });
   const groupFields = useFieldArray({ control: form.control, name: 'groups' });
 
@@ -62,7 +64,7 @@ export default function BookForm(props: BookFormProps) {
         </button>
       </div>
       <button className="btn btn-primary" type="submit" disabled={form.formState.isSubmitting}>
-        Create
+        {flatBook ? 'Save' : 'Create'}
       </button>
     </form>
   );

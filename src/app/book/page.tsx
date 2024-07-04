@@ -1,12 +1,6 @@
-import connect from '@/db/connect';
 import Link from 'next/link';
-import { cache } from 'react';
-import { Books } from '../../db/Books';
 
-const getBooks = cache(async () => {
-  await connect();
-  return Books.find().lean();
-});
+import { getBooks } from '@/lib/utils';
 
 export default async function Page() {
   const books = await getBooks();
