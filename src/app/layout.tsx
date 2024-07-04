@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 
-import BottomNav from '@/components/BottomNav';
+import BottomNavLink from '@/components/BottomNavLink';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -28,7 +28,10 @@ export default function RootLayout({
     <html lang="en">
       <body>
         {children}
-        <BottomNav/>
+        <nav className="btm-nav">
+          <BottomNavLink href="/">Test</BottomNavLink>
+          <BottomNavLink href="/book">Books</BottomNavLink>
+        </nav>
       </body>
     </html>
   );
