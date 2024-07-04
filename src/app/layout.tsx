@@ -1,3 +1,11 @@
+import {
+  BookOpenIcon as BookOpenIconOutline,
+  HomeIcon as HomeIconOutline,
+} from '@heroicons/react/24/outline';
+import {
+  BookOpenIcon as BookOpenIconSolid,
+  HomeIcon as HomeIconSolid,
+} from '@heroicons/react/24/solid';
 import type { Metadata, Viewport } from 'next';
 
 import BottomNavLink from '@/components/BottomNavLink';
@@ -14,8 +22,6 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
   viewportFit: 'cover',
 };
 
@@ -29,8 +35,18 @@ export default function RootLayout({
       <body>
         {children}
         <nav className="btm-nav">
-          <BottomNavLink href="/">Test</BottomNavLink>
-          <BottomNavLink href="/book">Books</BottomNavLink>
+          <BottomNavLink
+            href="/"
+            text="Test"
+            icon={<HomeIconOutline />}
+            activeIcon={<HomeIconSolid />}
+          />
+          <BottomNavLink
+            href="/book"
+            text="Book"
+            icon={<BookOpenIconOutline />}
+            activeIcon={<BookOpenIconSolid />}
+          />
         </nav>
       </body>
     </html>

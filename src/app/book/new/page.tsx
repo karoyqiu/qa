@@ -1,3 +1,3 @@
 export default function Page() {
-  return <div>Noting</div>;
+  return <div>New page</div>;
 }
