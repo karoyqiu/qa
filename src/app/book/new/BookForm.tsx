@@ -3,13 +3,13 @@ import { TrashIcon } from '@heroicons/react/24/outline';
 import { PlusIcon } from '@heroicons/react/24/solid';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Fragment } from 'react';
-import { useFieldArray, useForm, type SubmitHandler } from 'react-hook-form';
+import { useFieldArray, useForm } from 'react-hook-form';
 import Input from '../../../components/Input';
 import { flatBookSchema, type FlatBook } from '../../../lib/schemas/book';
 import QuestionsFields from './QuestionsFields';
 
 type BookFormProps = {
-  onSubmit: SubmitHandler<FlatBook>;
+  onSubmit: (flatBook: FlatBook) => unknown | Promise<unknown>;
 };
 
 export default function BookForm(props: BookFormProps) {
@@ -20,7 +20,7 @@ export default function BookForm(props: BookFormProps) {
   const groupFields = useFieldArray({ control: form.control, name: 'groups' });
 
   return (
-    <form className="flex flex-col gap-2" onSubmit={form.handleSubmit(onSubmit)}>
+    <form className="flex flex-col gap-2" onSubmit={form.handleSubmit((data) => onSubmit(data))}>
       <Input {...form.register('title')} required autoFocus />
       <Input {...form.register('author')} autoComplete="name" />
       <Input {...form.register('description')} />
