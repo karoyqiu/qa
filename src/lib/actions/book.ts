@@ -1,5 +1,6 @@
 'use server';
 import mongoose from 'mongoose';
+import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 
 import { Books } from '@/db/Books';
@@ -29,5 +30,6 @@ export const createBook = async (flatBook: FlatBook) => {
     await book.save({ session });
   });
 
+  revalidatePath('/book');
   redirect('/book');
 };

@@ -3,8 +3,9 @@ import { TrashIcon } from '@heroicons/react/24/outline';
 import { PlusIcon } from '@heroicons/react/24/solid';
 import { Fragment } from 'react';
 import { useFieldArray, type Control, type UseFormRegister } from 'react-hook-form';
-import Input from '../../../components/Input';
-import type { FlatBook } from '../../../lib/schemas/book';
+
+import Input from '@/components/Input';
+import type { FlatBook } from '@/lib/schemas/book';
 
 type QuestionsFieldsProps = {
   groupIndex: number;

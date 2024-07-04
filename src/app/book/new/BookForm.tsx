@@ -4,8 +4,9 @@ import { PlusIcon } from '@heroicons/react/24/solid';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Fragment } from 'react';
 import { useFieldArray, useForm } from 'react-hook-form';
-import Input from '../../../components/Input';
-import { flatBookSchema, type FlatBook } from '../../../lib/schemas/book';
+
+import Input from '@/components/Input';
+import { flatBookSchema, type FlatBook } from '@/lib/schemas/book';
 import QuestionsFields from './QuestionsFields';
 
 type BookFormProps = {
