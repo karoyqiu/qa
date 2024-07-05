@@ -18,4 +18,5 @@ export const flatBookSchema = z.object({
   groups: groupSchema.array().min(1),
 });
 
+export type Question = z.infer<typeof questionSchema>;
 export type FlatBook = z.infer<typeof flatBookSchema>;

@@ -10,3 +10,7 @@ svg {
   @apply text-error;
   content: ' *';
 }
+
+::marker {
+  --tw-text-opacity: 1;
+}
