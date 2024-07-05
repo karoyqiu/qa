@@ -1,6 +1,11 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 
 import { getBooks } from '@/lib/utils';
+
+export const metadata: Metadata = {
+  title: 'Books',
+};
 
 export default async function Page() {
   const books = await getBooks();

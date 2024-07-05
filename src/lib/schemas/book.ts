@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-const questionSchema = z.object({
+export const questionSchema = z.object({
   q: z.string().trim().min(1),
   a: z.string().trim().min(1),
 });

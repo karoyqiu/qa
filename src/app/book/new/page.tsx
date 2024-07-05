@@ -1,5 +1,11 @@
+import type { Metadata } from 'next';
+
+import BookForm from '@/components/BookForm';
 import { createBook } from '@/lib/actions/book';
-import BookForm from '../../../components/BookForm';
+
+export const metadata: Metadata = {
+  title: 'Create new book',
+};
 
 export default function Page() {
   return (

@@ -59,7 +59,7 @@ export default function BookForm(props: BookFormProps) {
             })
           }
         >
-          <PlusIcon className="size-6" />
+          <PlusIcon />
           Add group
         </button>
       </div>

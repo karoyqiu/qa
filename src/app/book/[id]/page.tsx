@@ -4,12 +4,23 @@ import BookForm from '@/components/BookForm';
 import { saveBook } from '@/lib/actions/book';
 import { getBook, getBooks } from '@/lib/utils';
 
+type PageParams = { params: { id: string } };
+
 export async function generateStaticParams() {
   const books = await getBooks();
   return books.map((book) => ({ id: book._id.toString() }));
 }
 
-export default async function Page({ params }: { params: { id: string } }) {
+export async function generateMetadata({ params }: PageParams) {
+  const { id } = params;
+  const book = await getBook(id);
+
+  return {
+    title: book?.title,
+  };
+}
+
+export default async function Page({ params }: PageParams) {
   const { id } = params;
   const book = await getBook(id);
 

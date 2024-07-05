@@ -17,7 +17,12 @@ const Input = forwardRef<HTMLInputElement, InputProps>(function Input(props, ref
           <span className={cn('label-text', rest.required && 'required')}>{l}</span>
         </div>
       )}
-      <input className={cn('input input-bordered w-full', className)} {...rest} ref={ref} />
+      <input
+        className={cn('input input-bordered w-full', className)}
+        aria-required={rest.required}
+        {...rest}
+        ref={ref}
+      />
     </label>
   );
 });

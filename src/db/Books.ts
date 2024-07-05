@@ -2,7 +2,7 @@ import { Schema, type InferSchemaType } from 'mongoose';
 import getModel from './getModel';
 
 /** 问题 */
-const questionSchema = new Schema(
+export const questionSchema = new Schema(
   {
     /** 问题 */
     q: { type: String, required: true },

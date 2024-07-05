@@ -43,7 +43,7 @@ export default function QuestionsFields(props: QuestionsFieldsProps) {
         </Fragment>
       ))}
       <button className="btn mt-2" type="button" onClick={() => fields.append({ q: '', a: '' })}>
-        <PlusIcon className="size-6" />
+        <PlusIcon />
         Add question
       </button>
     </div>
