@@ -37,7 +37,7 @@ export default function RootLayout({
         <nav className="btm-nav">
           <BottomNavLink
             href="/"
-            text="Test"
+            text="Home"
             icon={<HomeIconOutline />}
             activeIcon={<HomeIconSolid />}
           />
