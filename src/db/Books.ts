@@ -1,5 +1,27 @@
-import { Schema, Types, type InferSchemaType } from 'mongoose';
+import { Schema, type InferSchemaType } from 'mongoose';
 import getModel from './getModel';
+
+/** 问题 */
+const questionSchema = new Schema(
+  {
+    /** 问题 */
+    q: { type: String, required: true },
+    /** 答案 */
+    a: { type: String, required: true },
+  },
+  { _id: false },
+);
+
+/** 分组 */
+const groupSchema = new Schema(
+  {
+    /** 名称 */
+    name: { type: String, required: true },
+    /** 问题 */
+    questions: { type: [questionSchema], required: true },
+  },
+  { _id: false },
+);
 
 /** 问题书 */
 const bookSchema = new Schema(
@@ -11,7 +33,7 @@ const bookSchema = new Schema(
     /** 描述 */
     description: String,
     /** 分组 */
-    groups: { type: [Types.ObjectId], required: true, ref: 'Group' },
+    groups: { type: [groupSchema], required: true },
   },
   { timestamps: true },
 );

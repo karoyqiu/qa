@@ -1,6 +1,8 @@
-import BookForm from '@/components/BookForm';
-import { getBook, getBooks } from '@/lib/utils';
 import { redirect } from 'next/navigation';
+
+import BookForm from '@/components/BookForm';
+import { saveBook } from '@/lib/actions/book';
+import { getBook, getBooks } from '@/lib/utils';
 
 export async function generateStaticParams() {
   const books = await getBooks();
@@ -17,7 +19,7 @@ export default async function Page({ params }: { params: { id: string } }) {
 
   return (
     <div className="flex flex-1 flex-col gap-4 overflow-y-auto p-2">
-      <BookForm flatBook={book} />
+      <BookForm flatBook={book} onSubmit={saveBook} />
     </div>
   );
 }

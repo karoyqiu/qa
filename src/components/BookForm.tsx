@@ -64,7 +64,7 @@ export default function BookForm(props: BookFormProps) {
         </button>
       </div>
       <button className="btn btn-primary" type="submit" disabled={form.formState.isSubmitting}>
-        {flatBook ? 'Save' : 'Create'}
+        {flatBook?._id ? 'Save' : 'Create'}
       </button>
     </form>
   );
