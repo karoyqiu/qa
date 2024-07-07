@@ -1,16 +1,18 @@
-import { Schema, Types, type InferSchemaType } from 'mongoose';
+import { Schema, type InferSchemaType } from 'mongoose';
 import { questionSchema } from './Books';
 import getModel from './getModel';
 
 /** 测试 */
-const testSchema = new Schema(
+const examSchema = new Schema(
   {
-    /** 问题书 */
-    book: { type: Types.ObjectId, ref: 'Book', required: true, index: true },
+    /** 问题书标题 */
+    title: { type: String, required: true },
     /** 问题 */
     questions: { type: [questionSchema], required: true },
-    // /** 每题得分 */
-    // scores: { type: [Number], min: 0 },
+    /** 每题得分 */
+    scores: { type: [Number], min: 0 },
+    /** 做题时间，毫秒 */
+    duration: Number,
   },
   {
     timestamps: true,
@@ -27,6 +29,6 @@ const testSchema = new Schema(
 );
 
 /** 测试 */
-export type Test = InferSchemaType<typeof testSchema>;
+export type Exam = InferSchemaType<typeof examSchema>;
 /** 测试 */
-export const Tests = getModel('Test', testSchema);
+export const Exams = getModel('Exam', examSchema);

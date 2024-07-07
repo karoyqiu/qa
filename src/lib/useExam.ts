@@ -1,11 +1,5 @@
 import { useLocalStorage, useReadLocalStorage } from 'usehooks-ts';
-import type { Question } from './schemas/book';
-
-export type Exam = {
-  title: string;
-  questions: Question[];
-  scores: number[];
-};
+import type { Exam } from '../db/Exams';
 
 export const useExam = () => {
   const [exam, setExam, clearExam] = useLocalStorage<Exam | null>('exam', null, {
