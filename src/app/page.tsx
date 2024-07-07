@@ -1,7 +1,11 @@
 import { PlusIcon } from '@heroicons/react/24/solid';
 import Link from 'next/link';
+import { auth, signIn } from '../auth';
+import Input from '../components/Input';
 
-export default function Home() {
+export default async function Home() {
+  const session = await auth();
+
   return (
     <div className="flex flex-col">
       <div className="navbar bg-neutral text-neutral-content">
@@ -13,6 +17,19 @@ export default function Home() {
         </div>
       </div>
       <div className="flex flex-col gap-4 p-4">
+        {session ? (
+          <div>{`Hello, ${session.user?.name ?? session.user?.email ?? 'John Doe'}!`}</div>
+        ) : (
+          <form
+            action={async (formData) => {
+              'use server';
+              await signIn('resend', formData);
+            }}
+          >
+            <Input name="email" type="email" autoComplete="email" />
+            <button className="btn btn-primary">Sign in with email</button>
+          </form>
+        )}
         <Link className="btn btn-primary" href="/test/new">
           New test
         </Link>

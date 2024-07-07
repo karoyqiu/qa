@@ -2,7 +2,10 @@ import env from '@/env';
 import mongoose from 'mongoose';
 
 declare global {
-  var mongoose: any; // This must be a `var` and not a `let / const`
+  var mongoose:
+    | { promise: Promise<mongoose.Mongoose> | null; conn: mongoose.Mongoose | null }
+    | undefined
+    | null; // This must be a `var` and not a `let / const`
 }
 
 let cached = global.mongoose;
