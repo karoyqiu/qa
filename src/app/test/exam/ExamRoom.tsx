@@ -1,12 +1,15 @@
 'use client';
-import { useEffect, useId, useState } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 
 import cn from '@/components/cn';
 import { useReadExam } from '@/lib/useExam';
+import { saveExam } from '../../../lib/actions/exam';
+import type { Wrong } from '../../../lib/schemas/exam';
 
 export default function ExamRoom() {
   const exam = useReadExam();
   const [scores, setScores] = useState<number[]>([]);
+  const now = useRef(Date.now());
   const id = useId();
 
   useEffect(() => {
@@ -25,7 +28,11 @@ export default function ExamRoom() {
             }
           }
         }
+
+        now.current = Date.now();
       } else {
+        const wrongs: Wrong[] = [];
+
         for (let i = 0; i < exam.questions.length; i++) {
           const elem = document.getElementById(`${id}${i}`);
 
@@ -33,10 +40,20 @@ export default function ExamRoom() {
             const input = elem as HTMLInputElement;
 
             if (input.value !== exam.questions[i].a) {
+              wrongs.push({
+                i,
+                a: input.value,
+              });
               input.value = `${input.value} -> ${exam.questions[i].a}`;
             }
           }
         }
+
+        saveExam({
+          ...exam,
+          wrongs,
+          duration: Date.now() - now.current,
+        });
       }
     }
   }, [exam, scores, id]);

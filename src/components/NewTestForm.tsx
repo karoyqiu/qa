@@ -50,7 +50,6 @@ export default function NewTestForm(props: NewTestFormProps) {
     setExam({
       title: book.title,
       questions: shuffle(questions),
-      scores: [],
     });
 
     router.push('/test/exam');
