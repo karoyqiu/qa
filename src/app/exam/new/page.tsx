@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
-import NewTestForm from '../../../components/NewTestForm';
-import { getBooks } from '../../../lib/utils';
+
+import NewExamForm from '@/components/NewExamForm';
+import { getBooks } from '@/lib/utils';
 
 export const metadata: Metadata = {
-  title: 'Create new test',
+  title: 'New exam',
 };
 
 export default async function Page() {
@@ -11,8 +12,8 @@ export default async function Page() {
 
   return (
     <div className="flex flex-1 flex-col gap-4 overflow-y-auto p-2">
-      <h1>Create new test</h1>
-      <NewTestForm books={books.map((book) => ({ ...book, _id: book._id.toString() }))} />
+      <h1>New exam</h1>
+      <NewExamForm books={books.map((book) => ({ ...book, _id: book._id.toString() }))} />
     </div>
   );
 }

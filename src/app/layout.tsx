@@ -36,7 +36,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         {children}
-        <nav className="btm-nav">
+        <nav className="btm-nav md:hidden">
           <BottomNavLink
             href="/"
             text="Home"

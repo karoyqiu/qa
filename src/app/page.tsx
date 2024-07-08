@@ -1,23 +1,20 @@
 import { PlusIcon } from '@heroicons/react/24/solid';
 import Link from 'next/link';
 
-import { auth, signIn, signOut } from '@/auth';
+import { auth, signIn } from '@/auth';
 import Input from '@/components/Input';
-import SignOutButton from '../components/SignOutButton';
+import SignOutButton from '@/components/SignOutButton';
+import TopNavBar from '@/components/TopNavBar';
 
 export default async function Home() {
   const session = await auth();
 
-  const bye = async () => {
-    'use server';
-    await signOut();
-  };
-
   return (
     <div className="flex flex-col">
-      <div className="navbar bg-neutral text-neutral-content">
-        <h1 className="text-xl">Questions & Answers!</h1>
-        <div className="ml-auto">
+      <div className="navbar gap-4 bg-neutral text-neutral-content">
+        <h1 className="text-xl md:navbar-start">Questions & Answers!</h1>
+        <TopNavBar currentHref="/" />
+        <div className="ml-auto md:navbar-end">
           <Link className="btn btn-square btn-ghost" href="/exam/new">
             <PlusIcon />
           </Link>

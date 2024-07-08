@@ -14,11 +14,11 @@ type WithId<T> = T & {
   _id: string;
 };
 
-type NewTestFormProps = {
+type NewExamFormProps = {
   books: WithId<Book>[];
 };
 
-export default function NewTestForm(props: NewTestFormProps) {
+export default function NewExamForm(props: NewExamFormProps) {
   const { books } = props;
   const [bookId, setBookId] = useState(books[0]._id);
   const [groupIndexes, setGroupIndexes] = useState<number[]>([]);
