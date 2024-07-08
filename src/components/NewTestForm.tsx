@@ -52,7 +52,7 @@ export default function NewTestForm(props: NewTestFormProps) {
       questions: shuffle(questions),
     });
 
-    router.push('/test/exam');
+    router.push('/exam/exam');
   };
 
   useEffect(() => {

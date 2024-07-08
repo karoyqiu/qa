@@ -1,10 +1,12 @@
 import {
   BookOpenIcon as BookOpenIconOutline,
   HomeIcon as HomeIconOutline,
+  PencilIcon as PencilIconOutline,
 } from '@heroicons/react/24/outline';
 import {
   BookOpenIcon as BookOpenIconSolid,
   HomeIcon as HomeIconSolid,
+  PencilIcon as PencilIconSolid,
 } from '@heroicons/react/24/solid';
 import type { Metadata, Viewport } from 'next';
 
@@ -40,6 +42,12 @@ export default function RootLayout({
             text="Home"
             icon={<HomeIconOutline />}
             activeIcon={<HomeIconSolid />}
+          />
+          <BottomNavLink
+            href="/exam"
+            text="Exam"
+            icon={<PencilIconOutline />}
+            activeIcon={<PencilIconSolid />}
           />
           <BottomNavLink
             href="/book"

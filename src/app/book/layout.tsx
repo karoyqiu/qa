@@ -16,7 +16,9 @@ export default function BookLayout({
           </Link>
         </div>
       </div>
-      <div className="container mx-auto">{children}</div>
+      <div className="overflow-y-auto">
+        <div className="container mx-auto">{children}</div>
+      </div>
     </div>
   );
 }

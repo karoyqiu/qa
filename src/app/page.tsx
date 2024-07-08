@@ -18,7 +18,7 @@ export default async function Home() {
       <div className="navbar bg-neutral text-neutral-content">
         <h1 className="text-xl">Questions & Answers!</h1>
         <div className="ml-auto">
-          <Link className="btn btn-square btn-ghost" href="/test/new">
+          <Link className="btn btn-square btn-ghost" href="/exam/new">
             <PlusIcon />
           </Link>
         </div>
@@ -26,8 +26,8 @@ export default async function Home() {
       {session ? (
         <div className="container mx-auto flex flex-col gap-4 p-4">
           <div>{`Hello, ${session.user?.name ?? session.user?.email ?? 'John Doe'}!`}</div>
-          <Link className="btn btn-primary" href="/test/new">
-            New test
+          <Link className="btn btn-primary" href="/exam/new">
+            New exam
           </Link>
           <Link className="btn btn-secondary" href="/book/new">
             New book

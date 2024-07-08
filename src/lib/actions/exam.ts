@@ -22,5 +22,6 @@ export const saveExam = async (exam: Exam) => {
 
   await connect();
   const doc = await Exams.create({ ...valid.data, user: session.user.id });
+  revalidatePath('/exam');
   revalidatePath(`/exam/${doc._id}`);
 };

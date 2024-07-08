@@ -9,14 +9,16 @@ export default function BookLayout({
   return (
     <div className="flex max-h-[calc(100vh-4rem)] flex-col">
       <div className="navbar bg-neutral text-neutral-content">
-        <h1 className="text-xl">Tests</h1>
+        <h1 className="text-xl">Exams</h1>
         <div className="ml-auto">
-          <Link className="btn btn-square btn-ghost" href="/test/new">
+          <Link className="btn btn-square btn-ghost" href="/exam/new">
             <PlusIcon />
           </Link>
         </div>
       </div>
-      <div className="container mx-auto">{children}</div>
+      <div className="overflow-y-auto">
+        <div className="container mx-auto">{children}</div>
+      </div>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import { useLocalStorage, useReadLocalStorage } from 'usehooks-ts';
 import type { Exam } from './schemas/exam';
 
-type ExamOnly = Pick<Exam, 'title' | 'questions'>;
+export type ExamOnly = Pick<Exam, 'title' | 'questions'>;
 
 export const useExam = () => {
   const [exam, setExam, clearExam] = useLocalStorage<ExamOnly | null>('exam', null, {

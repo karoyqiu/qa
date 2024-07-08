@@ -2,9 +2,9 @@
 import { useEffect, useId, useRef, useState } from 'react';
 
 import cn from '@/components/cn';
+import { saveExam } from '@/lib/actions/exam';
+import type { Wrong } from '@/lib/schemas/exam';
 import { useReadExam } from '@/lib/useExam';
-import { saveExam } from '../../../lib/actions/exam';
-import type { Wrong } from '../../../lib/schemas/exam';
 
 export default function ExamRoom() {
   const exam = useReadExam();
