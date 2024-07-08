@@ -1,4 +1,4 @@
-import { Schema, type InferSchemaType } from 'mongoose';
+import { Schema, Types, type InferSchemaType } from 'mongoose';
 import { questionSchema } from './Books';
 import getModel from './getModel';
 
@@ -16,6 +16,8 @@ const wrongSchema = new Schema(
 /** 测试 */
 const examSchema = new Schema(
   {
+    /** 用户 */
+    user: { type: Types.ObjectId, ref: 'User', required: true, index: true },
     /** 问题书标题 */
     title: { type: String, required: true, immutable: true },
     /** 问题 */

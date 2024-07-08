@@ -2,13 +2,20 @@ import { redirect } from 'next/navigation';
 
 import BookForm from '@/components/BookForm';
 import { saveBook } from '@/lib/actions/book';
-import { getBook, getBooks } from '@/lib/utils';
+import { getBook } from '@/lib/utils';
+import { Books } from '../../../db/Books';
 
 type PageParams = { params: { id: string } };
 
 export async function generateStaticParams() {
-  const books = await getBooks();
-  return books.map((book) => ({ id: book._id.toString() }));
+  const params: { id: string }[] = [];
+  const cursor = Books.find({}, '_id').cursor();
+
+  for await (const book of cursor) {
+    params.push({ id: book._id.toString() });
+  }
+
+  return params;
 }
 
 export async function generateMetadata({ params }: PageParams) {

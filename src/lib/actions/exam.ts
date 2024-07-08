@@ -1,11 +1,18 @@
 'use server';
 import { revalidatePath } from 'next/cache';
 
+import { auth } from '@/auth';
 import connect from '@/db/connect';
 import { Exams } from '@/db/Exams';
 import { examSchema, type Exam } from '../schemas/exam';
 
 export const saveExam = async (exam: Exam) => {
+  const session = await auth();
+
+  if (!session?.user?.id) {
+    return;
+  }
+
   const valid = examSchema.safeParse(exam);
 
   if (!valid.success) {
@@ -14,6 +21,6 @@ export const saveExam = async (exam: Exam) => {
   }
 
   await connect();
-  const doc = await Exams.create(valid.data);
+  const doc = await Exams.create({ ...valid.data, user: session.user.id });
   revalidatePath(`/exam/${doc._id}`);
 };

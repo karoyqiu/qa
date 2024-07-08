@@ -16,7 +16,7 @@ export default function BookLayout({
           </Link>
         </div>
       </div>
-      {children}
+      <div className="container mx-auto">{children}</div>
     </div>
   );
 }

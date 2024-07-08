@@ -1,4 +1,4 @@
-import { Schema, type InferSchemaType } from 'mongoose';
+import { Schema, Types, type InferSchemaType } from 'mongoose';
 import getModel from './getModel';
 
 /** 问题 */
@@ -26,6 +26,8 @@ const groupSchema = new Schema(
 /** 问题书 */
 const bookSchema = new Schema(
   {
+    /** 用户 */
+    user: { type: Types.ObjectId, ref: 'User', required: true, index: true },
     /** 标题 */
     title: { type: String, required: true },
     /** 作者 */
