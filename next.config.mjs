@@ -3,7 +3,7 @@ const DEV = process.env.NODE_ENV !== 'production';
 const cspHeader = `
   default-src 'self';
   base-uri 'self';
-  script-src 'self' ${DEV ? `'unsafe-inline' 'unsafe-eval'` : ''};
+  script-src 'self' 'unsafe-inline' ${DEV ? `'unsafe-eval'` : ''};
   object-src 'none';
   frame-ancestors 'none';
   ${DEV ? '' : 'upgrade-insecure-requests;'}
