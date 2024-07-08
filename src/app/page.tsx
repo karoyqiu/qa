@@ -2,6 +2,7 @@ import { PlusIcon } from '@heroicons/react/24/solid';
 import Link from 'next/link';
 
 import { auth, signIn } from '@/auth';
+import Auth0Button from '@/components/Auth0Button';
 import Input from '@/components/Input';
 import SignOutButton from '@/components/SignOutButton';
 import TopNavBar from '@/components/TopNavBar';
@@ -40,7 +41,11 @@ export default async function Home() {
           }}
         >
           <Input name="email" type="email" autoComplete="email" autoFocus required />
-          <button className="btn btn-primary">Sign in with email</button>
+          <button className="btn btn-primary" type="submit">
+            Sign in with email
+          </button>
+          <div className="divider">OR</div>
+          <Auth0Button />
         </form>
       )}
     </div>

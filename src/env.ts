@@ -3,9 +3,11 @@ import { z } from 'zod';
 
 const env = createEnv({
   server: {
-    MONGODB_URI: z.string(),
+    MONGODB_URI: z.string().min(1),
     AUTH_SECRET: z.string().min(1),
     AUTH_RESEND_KEY: z.string().min(1),
+    AUTH_AUTH0_ID: z.string().min(1),
+    AUTH_AUTH0_SECRET: z.string().min(1),
   },
   client: {
     //NEXT_PUBLIC_PUBLISHABLE_KEY: z.string().min(1),
