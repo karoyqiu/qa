@@ -20,9 +20,9 @@ export default async function Home() {
           </Link>
         </div>
       </div>
-      {session ? (
+      {session?.user ? (
         <div className="container mx-auto flex flex-col gap-4 p-4">
-          <div>{`Hello, ${session.user?.name ?? session.user?.email ?? 'John Doe'}!`}</div>
+          <div>{`Hello, ${session.user.name ?? session.user.email ?? 'John Doe'}!`}</div>
           <Link className="btn btn-primary" href="/exam/new">
             New exam
           </Link>
