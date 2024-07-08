@@ -9,7 +9,7 @@ export default function BookLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="flex max-h-screen flex-col md:max-h-[calc(100vh-4rem)]">
+    <div className="flex max-h-[calc(100vh-4rem)] flex-col md:max-h-screen">
       <div className="navbar gap-4 bg-neutral text-neutral-content">
         <h1 className="text-xl md:navbar-start">Exams</h1>
         <TopNavBar currentHref="/exam" />

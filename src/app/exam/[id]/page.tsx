@@ -3,6 +3,7 @@ import { list } from 'radash';
 import cn from '@/components/cn';
 import { Exams } from '@/db/Exams';
 import { getExam } from '@/lib/utils';
+import AgainButton from './AgentButton';
 
 type PageParams = { params: { id: string } };
 
@@ -99,6 +100,7 @@ export default async function Page({ params }: PageParams) {
           </li>
         ))}
       </ol>
+      <AgainButton exam={exam} />
     </div>
   );
 }
