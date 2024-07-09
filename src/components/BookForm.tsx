@@ -9,6 +9,8 @@ import { flatBookSchema, type FlatBook } from '@/lib/schemas/book';
 import Input from './Input';
 import QuestionsFields from './QuestionsFields';
 
+//const dupQuestions = (from: Question[]) =>
+
 type BookFormProps = {
   flatBook?: FlatBook;
   onSubmit: (flatBook: FlatBook) => unknown | Promise<unknown>;
@@ -21,6 +23,19 @@ export default function BookForm(props: BookFormProps) {
     defaultValues: flatBook,
   });
   const groupFields = useFieldArray({ control: form.control, name: 'groups' });
+
+  const dup = () => {
+    const originalGroups = form.getValues('groups');
+
+    const newGroups = originalGroups.map((group) => ({
+      name: group.name,
+      questions: group.questions
+        .map((question) => [question, { q: question.a, a: question.q }])
+        .flat(),
+    }));
+
+    form.setValue('groups', newGroups);
+  };
 
   return (
     <form className="flex flex-col gap-2" onSubmit={form.handleSubmit((data) => onSubmit(data))}>
@@ -63,9 +78,22 @@ export default function BookForm(props: BookFormProps) {
           Add group
         </button>
       </div>
+      <button className="btn" type="button" onClick={dup}>
+        Duplicate & swap
+      </button>
       <button className="btn btn-primary" type="submit" disabled={form.formState.isSubmitting}>
         {flatBook?._id ? 'Save' : 'Create'}
       </button>
+      {flatBook?._id && (
+        <button
+          className="btn btn-warning"
+          type="button"
+          disabled={form.formState.isSubmitting}
+          onClick={() => form.reset(flatBook)}
+        >
+          Reset
+        </button>
+      )}
     </form>
   );
 }
