@@ -4,10 +4,11 @@ import { useEffect, useId, useRef, useState } from 'react';
 import cn from '@/components/cn';
 import { saveExam } from '@/lib/actions/exam';
 import type { Wrong } from '@/lib/schemas/exam';
-import { useReadExam } from '@/lib/useExam';
+import useExam from '@/lib/useExam';
+import { shuffle } from 'radash';
 
 export default function ExamRoom() {
-  const exam = useReadExam();
+  const { exam, setExam } = useExam();
   const [scores, setScores] = useState<number[]>([]);
   const now = useRef(Date.now());
   const id = useId();
@@ -95,7 +96,14 @@ export default function ExamRoom() {
     }
   };
 
-  const check = () =>
+  const check = () => {
+    if (scores.length > 0) {
+      setExam({
+        title: exam.title,
+        questions: shuffle(exam.questions),
+      });
+    }
+
     setScores((old) => {
       if (old.length === 0) {
         const ss: number[] = [];
@@ -114,6 +122,7 @@ export default function ExamRoom() {
 
       return [];
     });
+  };
 
   return (
     <div className="flex flex-col gap-4">

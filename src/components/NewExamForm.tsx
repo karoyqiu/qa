@@ -3,11 +3,11 @@ import { RocketLaunchIcon } from '@heroicons/react/24/outline';
 import { useRouter } from 'next/navigation';
 import { list, shuffle } from 'radash';
 import { useEffect, useState } from 'react';
-import type { Book } from '../db/Books';
-import type { Question } from '../lib/schemas/book';
-import { useExam } from '../lib/useExam';
+
+import type { Book } from '@/db/Books';
+import type { Question } from '@/lib/schemas/book';
+import useExam from '@/lib/useExam';
 import Checkbox from './Checkbox';
-import Input from './Input';
 import Label from './Label';
 
 type WithId<T> = T & {
@@ -22,7 +22,6 @@ export default function NewExamForm(props: NewExamFormProps) {
   const { books } = props;
   const [bookId, setBookId] = useState(books[0]._id);
   const [groupIndexes, setGroupIndexes] = useState<number[]>([]);
-  const [count, setCount] = useState(0);
   const { setExam } = useExam();
   const router = useRouter();
   const book = books.find((b) => b._id === bookId);
@@ -63,10 +62,6 @@ export default function NewExamForm(props: NewExamFormProps) {
     }
   }, [books, bookId]);
 
-  useEffect(() => {
-    setCount(total);
-  }, [total]);
-
   return (
     <div className="flex flex-col gap-2">
       <Label label="Book">
@@ -103,11 +98,6 @@ export default function NewExamForm(props: NewExamFormProps) {
             />
           ))}
       </Label>
-      <Input
-        label="Question count"
-        value={count}
-        onChange={(event) => setCount(parseInt(event.target.value, 10))}
-      />
       <button className="btn btn-primary" onClick={generateExam}>
         <RocketLaunchIcon />
         Go!
