@@ -45,13 +45,13 @@ export default function RootLayout({
           />
           <BottomNavLink
             href="/exam"
-            text="Exam"
+            text="Exams"
             icon={<PencilIconOutline />}
             activeIcon={<PencilIconSolid />}
           />
           <BottomNavLink
             href="/book"
-            text="Book"
+            text="Books"
             icon={<BookOpenIconOutline />}
             activeIcon={<BookOpenIconSolid />}
           />

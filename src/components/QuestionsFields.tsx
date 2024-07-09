@@ -2,7 +2,7 @@
 import { TrashIcon } from '@heroicons/react/24/outline';
 import { PlusIcon } from '@heroicons/react/24/solid';
 import { Fragment } from 'react';
-import { useFieldArray, type Control, type UseFormRegister } from 'react-hook-form';
+import { useFieldArray, useWatch, type Control, type UseFormRegister } from 'react-hook-form';
 
 import Input from '@/components/Input';
 import type { FlatBook } from '@/lib/schemas/book';
@@ -15,6 +15,7 @@ type QuestionsFieldsProps = {
 
 export default function QuestionsFields(props: QuestionsFieldsProps) {
   const { groupIndex, control, register } = props;
+  const group = useWatch({ control, name: `groups.${groupIndex}.name` });
   const fields = useFieldArray({ control, name: `groups.${groupIndex}.questions` });
 
   return (
@@ -27,7 +28,7 @@ export default function QuestionsFields(props: QuestionsFieldsProps) {
           <div className="flex items-end gap-2">
             <Input
               {...register(`groups.${groupIndex}.questions.${index}.q`)}
-              label={`Group ${groupIndex + 1} question ${index + 1}`}
+              label={`${group} question ${index + 1}`}
               required
             />
             <button className="btn btn-square btn-error" onClick={() => fields.remove(index)}>
@@ -37,7 +38,7 @@ export default function QuestionsFields(props: QuestionsFieldsProps) {
           <Input
             key={field.id}
             {...register(`groups.${groupIndex}.questions.${index}.a`)}
-            label={`Group ${groupIndex + 1} answer ${index + 1}`}
+            label={`${group} answer ${index + 1}`}
             required
           />
         </Fragment>

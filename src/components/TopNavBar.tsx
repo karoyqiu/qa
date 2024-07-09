@@ -28,14 +28,14 @@ export default function TopNavBar(props: TopNavBarProps) {
       />
       <TopNavLink
         href="/exam"
-        text="Exam"
+        text="Exams"
         currentHref={currentHref}
         icon={<PencilIconOutline />}
         activeIcon={<PencilIconSolid />}
       />
       <TopNavLink
         href="/book"
-        text="Book"
+        text="Books"
         currentHref={currentHref}
         icon={<BookOpenIconOutline />}
         activeIcon={<BookOpenIconSolid />}
